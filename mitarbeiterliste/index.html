@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mitarbeiterliste</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #3f51b5;
+      color: white;
+      text-align: center;
+    }
+
+    table td {
+      background-color: rgba(255, 255, 255, 0.6);
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    body {
+      background-color: #373f6e;
+    }
+
+    h1 {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      text-align: center;
+      color: rgb(87, 167, 140);
+    }
+
+    .on {
+      color: green;
+    }
+
+    .off {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Mitarbeiterliste</h1>
+  <table id="data">
+    <tr>
+      <th>Discord ID</th>
+      <th>IC Name</th>
+      <th>Aktuelle XP</th>
+      <th>Aktuelles Level</th>
+      <th>Dienstzeit</th>
+      <th>Dienstzeit Auto</th>
+      <th>Aktueller Rang</th>
+      <th>Aktueller Status</th>
+    </tr>
+  </table>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    fetch("data.php?verify=" + params.get("verify"))
+      .then((response) => response.text())
+      .then((data) => {
+        if (data == "perms") {
+          window.location.replace("http://dustiiin.de/lapd/404.html");
+        }
+
+        $("#data").append(data);
+      });
+  </script>
+</body>
+
+</html>

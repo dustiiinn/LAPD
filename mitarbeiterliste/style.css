@@ -1,0 +1,46 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #3f51b5;
+  color: white;
+  text-align: center;
+}
+
+table td {
+  background-color: rgba(255, 255, 255, 0.6);
+  /* milchige Farbe */
+  text-align: center;
+}
+
+table tr {
+  background-color: #ddd;
+}
+
+body {
+  background-color: rgba(29, 19, 24, 0.8);
+}
+
+h1 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  /* Change the font to Comic Sans */
+  text-align: center;
+  /* Center align the text */
+}
+
+.on {
+  color: green;
+}
+
+.off {
+  color: red;
+}
