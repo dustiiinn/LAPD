@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>LAMD Login</title>
+  <style>
+    body {
+      background-color: #373f6e;
+    }
+
+    h1 {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      /* Change the font to Comic Sans */
+      text-align: center;
+      /* Center align the text */
+      color: aquamarine;
+    }
+
+    form {
+      width: 10%;
+      /* set the width of the form */
+      margin: 0 auto;
+      /* center the form horizontally */
+      text-align: center;
+      /* center the form content */
+      padding: 20px;
+      /* add some padding to the form */
+      border-radius: 10px;
+      /* add rounded corners to the form */
+    }
+
+    label {
+      font-size: 1.2em;
+      /* increase the font size of the labels */
+      font-weight: bold;
+      /* make the labels bold */
+      margin-bottom: 10px;
+      /* add some margin below the labels */
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+
+    .login-btn {
+      background-color: #5865f2;
+      /* Farbe des Hintergrunds */
+      color: white;
+      /* Farbe des Textes */
+      padding: 14px 20px;
+      /* Innenabstand */
+      border: none;
+      /* Entferne die Standard-Rahmen */
+      cursor: pointer;
+      /* Verändere den Cursor zu einem Zeigefinger */
+      width: 100%;
+      /* Breite des Buttons */
+      font-size: 18px;
+      /* Schriftgröße */
+      border-radius: 5px;
+      /* Eckenradius */
+      text-align: center;
+      /* Textausrichtung */
+    }
+
+    .login-btn:hover {
+      background-color: #297883;
+      /* Farbe des Hintergrunds beim Hover */
+    }
+  </style>
+</head>
+
+<body>
+  <img src="logo.png" alt="LAPD" style="display: block; margin: auto; width: 25%; height: 25%" />
+  <br />
+  <form>
+    <input type="button" value="Discord Login" class="login-btn"
+      onclick="window.location.href='https://discord.com/api/oauth2/authorize?client_id=1037559288886992926&redirect_uri=http%3A%2F%2Fdustiiin.de%2Flapd%2F&response_type=token&scope=identify'" />
+  </form>
+
+<form>
+    <input type="button" value="Test Login" class="login-btn"
+      onclick="window.location.href='http://dustiiin.de/lapd/mitarbeiterliste?verify=true'">
+</form>
+
+  <script>
+    window.onload = () => {
+      const fragment = new URLSearchParams(window.location.hash.slice(1));
+      const [accessToken, tokenType] = [
+        fragment.get("access_token"),
+        fragment.get("token_type"),
+      ];
+
+      if (!accessToken) {
+        return (document.getElementById("login").style.display = "block");
+      }
+
+      fetch("https://discord.com/api/users/@me", {
+        headers: {
+          authorization: `${tokenType} ${accessToken}`,
+        },
+      })
+        .then((result) => result.json())
+        .then((response) => {
+          const { id } = response;
+          console.log(id);
+          fetch("verify.php?id=" + id)
+            .then((response) => response.text())
+            .then((data) => {
+              console.log(data);
+              if (data == "true") {
+                window.location.replace(
+                  "http://dustiiin.de/lapd/mitarbeiterliste?verify=true"
+                );
+              } else {
+                window.location.replace(
+                  "http://dustiiin.de/lapd/mitarbeiterliste?verify=false"
+                );
+              }
+            });
+        })
+        .catch(console.error);
+    };
+  </script>
+
+
+</body>
+
+</html>

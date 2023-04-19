@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error 403 - Forbidden</title>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+      }
+
+      .error-container {
+        width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #ccc;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-size: 18px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      a {
+        color: #0077cc;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <h1>Error 403 - Forbidden</h1>
+      <p>Sorry, Sie haben keinen Zugriff auf die angeforderte Ressource.</p>
+      <p>
+        Bitte überprüfen Sie, ob Sie die richtigen Anmeldeinformationen haben,
+        oder wenden Sie sich an
+        <a onclick="openDiscordProfile('691644694739943474')">Dustiiin#4805</a>,
+        falls Sie denken, dass dies ein Fehler ist.
+      </p>
+
+      <p>
+        Sie können auch
+        <a href="http://dustiiin.de/lapd/">zur Startseite zurückkehren</a>.
+      </p>
+    </div>
+
+    <script>
+      function openDiscordProfile(id) {
+        window.open("discord://https://discordapp.com/users/" + id, "_blank");
+      }
+    </script>
+  </body>
+</html>
